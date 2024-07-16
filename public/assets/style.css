@@ -1,0 +1,13 @@
+*{
+    color: black;
+    text-transform: uppercase;
+}
+main{
+    background-color: aqua;
+}
+footer{
+    background-color: blueviolet;
+}
+header{
+    background-color: blueviolet;
+}
