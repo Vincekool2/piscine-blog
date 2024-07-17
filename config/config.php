@@ -7,13 +7,30 @@ error_reporting(E_ALL);
 session_set_cookie_params(3600);
 
 
-$dsn = 'mysql:host=localhost:8889;dbname=piscine_blog';
-$username = 'root';
-$password = 'root';
+class DbConnection {
 
-try {
-    $pdo = new PDO($dsn, $username, $password);
-	$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    echo "Erreur de connexion : " . $e->getMessage();
+    private $dsn;
+
+    private $username;
+
+    private $password;
+
+
+    function __construct() {
+        $this->dsn = 'mysql:host=localhost:8889;dbname=piscine_blog';
+        $this->username = 'root';
+        $this->password = 'root';
+    }
+
+    public function connect() {
+        try {
+            $pdo = new PDO($this->dsn, $this->username, $this->password);
+            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+            return $pdo;
+        } catch (PDOException $e) {
+            echo "Erreur de connexion : " . $e->getMessage();
+        }
+    }
 }
+

@@ -11,7 +11,7 @@ $articles = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 
-    <main> <h1>le super blog de la piscine</h1> 
+    <main> <h1>Articles</h1> 
 
     <?php foreach ($articles as $article) { ?>
 	<article>
